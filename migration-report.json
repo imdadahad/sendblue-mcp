@@ -1,0 +1,24 @@
+{
+  "changed": [
+    {"file": "src/models.py", "line": 22, "note": "@validator -> @field_validator('to_number', 'from_number') + @classmethod"},
+    {"file": "src/models.py", "line": 29, "note": "@validator -> @field_validator('send_style') + @classmethod"},
+    {"file": "src/models.py", "line": 36, "note": "@validator -> @field_validator('content', 'media_url') + @classmethod; values -> ValidationInfo.data"},
+    {"file": "src/models.py", "line": 54, "note": "@validator -> @field_validator('to_numbers') + @classmethod"},
+    {"file": "src/models.py", "line": 65, "note": "@validator -> @field_validator('from_number') + @classmethod"},
+    {"file": "src/models.py", "line": 72, "note": "@validator -> @field_validator('send_style') + @classmethod"},
+    {"file": "src/models.py", "line": 79, "note": "@validator -> @field_validator('group_id', 'to_numbers') + @classmethod; values/kwargs -> ValidationInfo"},
+    {"file": "src/models.py", "line": 90, "note": "@validator -> @field_validator('content', 'media_url') + @classmethod; values -> ValidationInfo.data"},
+    {"file": "src/models.py", "line": 102, "note": "@validator -> @field_validator('phone_number') + @classmethod"},
+    {"file": "src/models.py", "line": 114, "note": "@validator -> @field_validator('to_number') + @classmethod"},
+    {"file": "src/models.py", "line": 130, "note": "@validator -> @field_validator('contact_phone_number') + @classmethod"},
+    {"file": "src/models.py", "line": 137, "note": "@validator -> @field_validator('limit') + @classmethod"},
+    {"file": "src/models.py", "line": 144, "note": "@validator -> @field_validator('offset') + @classmethod"},
+    {"file": "src/models.py", "line": 157, "note": "@validator -> @field_validator('recipient_number') + @classmethod"}
+  ],
+  "skipped": [],
+  "guesses": [
+    {"file": "src/models.py", "line": 36, "assumed": "Cross-field content/media_url check preserved by mapping v1 `values` to `info.data`; a @model_validator(mode='after') may match intent more closely."},
+    {"file": "src/models.py", "line": 79, "assumed": "v1 `kwargs['field_name']` replaced with `info.field_name`; `values.get(other_field)` replaced with `info.data.get(other_field)` (raw input) rather than partially validated fields."},
+    {"file": "src/models.py", "line": 90, "assumed": "Same content/media_url cross-field mapping as line 36 for SendGroupMessageParams."}
+  ]
+}
