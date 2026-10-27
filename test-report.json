@@ -1,0 +1,9 @@
+{
+  "failures": [
+    {
+      "test": "tests/test_tools.py::TestSendGroupMessageTool::test_send_group_message_with_group_id_success",
+      "cause": "Using info.field_name in validate_group_id_or_to_numbers actually runs the mutual-exclusion check on explicit to_numbers=None (kwargs.get('field_name') was always None under Pydantic v2 @validator, so the check was dead code), and info.data does not yet contain group_id when to_numbers is validated first.",
+      "fix": "Replace this cross-field field_validator with a @model_validator(mode='after') that requires group_id or to_numbers, or enforce the rule only on group_id after to_numbers is present in info.data, so group_id-only calls from send_group_message are not rejected."
+    }
+  ]
+}
