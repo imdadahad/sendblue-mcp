@@ -89,7 +89,7 @@ class SendGroupMessageParams(BaseModel):
         field_name = info.field_name
         other_field = 'to_numbers' if field_name == 'group_id' else 'group_id'
         
-        if field_name == 'to_numbers' and not v and not info.data.get(other_field):
+        if field_name == 'to_numbers' and not v and 'group_id' in info.data and not info.data.get(other_field):
             raise ValueError("Either to_numbers or group_id must be provided")
             
         return v
