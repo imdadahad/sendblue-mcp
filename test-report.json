@@ -1,0 +1,9 @@
+{
+  "failures": [
+    {
+      "test": "tests.test_tools.TestSendGroupMessageTool::test_send_group_message_with_group_id_success",
+      "cause": "validate_group_id_or_to_numbers runs on to_numbers while group_id is still absent from info.data, and send_group_message passes to_numbers=None explicitly so that branch raises before group_id is validated; the old code used kwargs.get('field_name'), which Pydantic v1 never supplied, so the check never ran.",
+      "fix": "Replace this cross-field field_validator with a @model_validator(mode='after') (or run the either/or check only on group_id, the later field, using info.data['to_numbers']) so group_id is considered when only a group_id is provided."
+    }
+  ]
+}
