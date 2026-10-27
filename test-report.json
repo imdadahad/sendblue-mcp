@@ -1,0 +1,9 @@
+{
+  "failures": [
+    {
+      "test": "tests/test_tools.py::TestSendGroupMessageTool::test_send_group_message_with_group_id_success",
+      "cause": "validate_group_id_or_to_numbers rejects to_numbers=None using info.data.get('group_id'), but group_id is not in info.data yet because to_numbers is declared first and send_group_message passes to_numbers=None explicitly, so the cross-field check runs before group_id is validated.",
+      "fix": "Move the either-or check to run when validating group_id (after to_numbers is in info.data) or replace this field_validator with a @model_validator(mode='after') that inspects the fully built model."
+    }
+  ]
+}
