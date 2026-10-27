@@ -1,0 +1,36 @@
+{
+  "changed": [
+    {"file": "src/models.py", "line": 22, "note": "@validator('to_number', 'from_number') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 29, "note": "@validator('send_style') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 36, "note": "@validator('content', 'media_url') -> @field_validator with @classmethod; values -> ValidationInfo.data"},
+    {"file": "src/models.py", "line": 54, "note": "@validator('to_numbers') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 65, "note": "@validator('from_number') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 72, "note": "@validator('send_style') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 79, "note": "@validator('group_id', 'to_numbers') -> @field_validator with @classmethod; values/kwargs -> ValidationInfo"},
+    {"file": "src/models.py", "line": 90, "note": "@validator('content', 'media_url') -> @field_validator with @classmethod; values -> ValidationInfo.data"},
+    {"file": "src/models.py", "line": 102, "note": "@validator('phone_number') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 114, "note": "@validator('to_number') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 130, "note": "@validator('contact_phone_number') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 137, "note": "@validator('limit') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 144, "note": "@validator('offset') -> @field_validator with @classmethod"},
+    {"file": "src/models.py", "line": 157, "note": "@validator('recipient_number') -> @field_validator with @classmethod"}
+  ],
+  "skipped": [],
+  "guesses": [
+    {
+      "file": "src/models.py",
+      "line": 36,
+      "assumed": "Cross-field content/media_url check uses info.data with the same key-presence logic as v1 values; did not switch to @model_validator(mode='after') or incorporate the current field value via v."
+    },
+    {
+      "file": "src/models.py",
+      "line": 79,
+      "assumed": "kwargs['field_name'] replaced with info.field_name; values.get(other_field) replaced with info.data.get(other_field) so unvalidated sibling fields from input may still be visible."
+    },
+    {
+      "file": "src/models.py",
+      "line": 90,
+      "assumed": "Same cross-field content/media_url migration as SendMessageParams at line 36."
+    }
+  ]
+}
