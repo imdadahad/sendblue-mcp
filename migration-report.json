@@ -18,7 +18,7 @@
   "skipped": [],
   "guesses": [
     {"file": "src/models.py", "line": 36, "assumed": "Cross-field content/media_url check uses info.data as drop-in for v1 values dict; same condition may rarely fire because media_url is not in info.data when that field is validated (preserved v1 logic)."},
-    {"file": "src/models.py", "line": 79, "assumed": "kwargs field_name replaced with info.field_name; values.get(other_field) replaced with info.data.get(other_field) for group_id/to_numbers mutual requirement."},
+    {"file": "src/models.py", "line": 79, "assumed": "Deferred mutual-requirement check to group_id field: skip when to_numbers is empty/None (group_id not validated yet); enforce on group_id after to_numbers is in info.data. Matches intended behaviour when tools pass to_numbers=None explicitly."},
     {"file": "src/models.py", "line": 90, "assumed": "Same info.data translation as line 36 for SendGroupMessageParams.validate_content_or_media."}
   ]
 }

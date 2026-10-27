@@ -88,11 +88,10 @@ class SendGroupMessageParams(BaseModel):
     def validate_group_id_or_to_numbers(cls, v, info: ValidationInfo):
         """Validate that either group_id or to_numbers is provided."""
         field_name = info.field_name
-        other_field = 'to_numbers' if field_name == 'group_id' else 'group_id'
-        
-        if field_name == 'to_numbers' and not v and not info.data.get(other_field):
+        if field_name == 'to_numbers' and not v:
+            return v
+        if field_name == 'group_id' and not v and not info.data.get('to_numbers'):
             raise ValueError("Either to_numbers or group_id must be provided")
-            
         return v
     
     @field_validator('content', 'media_url')
